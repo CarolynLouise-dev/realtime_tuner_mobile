@@ -7,19 +7,13 @@
     android:background="#121212"
     android:clipChildren="false">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.05"
-        android:background="@drawable/cat" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:text="GUITAR TUNA"
-        android:textColor="#D9CFCF"
-        android:letterSpacing="0.4"
+        android:textColor="#888888"
+        android:letterSpacing="0.3"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +37,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/gauge_container"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,69 +46,81 @@
         <TextView
             android:id="@+id/txt_direction_hint"
             android:layout_width="wrap_content"
-            android:layout_height="24dp"
+            android:layout_height="wrap_content"
             android:text="TUNE UP!"
             android:textColor="#E74C3C"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:letterSpacing="0.1"
             android:visibility="invisible" />
 
         <TextView
             android:id="@+id/txt_current_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="D#2"
-            android:layout_marginTop="100dp"
+            android:text="--"
             android:textColor="#FFFFFF"
-            android:textSize="50sp"
-            android:fontFamily="sans-serif-condensed-light"
+            android:textSize="80sp"
+            android:fontFamily="sans-serif-thin"
             android:textStyle="bold" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/gauge_container"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:paddingHorizontal="40dp"
         app:layout_constraintBottom_toTopOf="@id/headstock_area"
         app:layout_constraintTop_toBottomOf="@id/note_area">
 
-
         <View
             android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:layout_gravity="center_vertical"
-            android:background="#423131" />
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="#333333" />
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="#1ABC9C" />
 
         <FrameLayout
             android:id="@+id/pointer_wrapper"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:clipChildren="false">
 
-
-
-            <TextView
-                android:id="@+id/txt_bubble_cents"
+            <FrameLayout
                 android:layout_width="40dp"
-                android:layout_gravity="center"
                 android:layout_height="40dp"
-                android:background="@drawable/cents_bubble_bg"
-                android:rotation="-45"
-                android:elevation="8dp" />
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="5dp">
 
+                <View
+                    android:id="@+id/txt_bubble_cents"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cents_bubble_bg"
+                    android:rotation="-45" />
 
+                <TextView
+                    android:id="@+id/txt_cents_raw"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
 
             <View
                 android:layout_width="10dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:background="#1ABC9C"
-                android:elevation="4dp" />
-
-
+                android:layout_height="60dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="#1ABC9C" />
         </FrameLayout>
     </FrameLayout>
 
@@ -123,31 +129,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:clipChildren="false"
         app:layout_constraintBottom_toTopOf="@id/footer_info"
-        android:layout_marginBottom="40dp">
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="vertical">
             <TextView android:id="@+id/btn_d3" style="@style/PegStyle" android:text="D" />
-            <TextView android:id="@+id/btn_a2" style="@style/PegStyle" android:layout_marginVertical="20dp" android:text="A" />
+            <TextView android:id="@+id/btn_a2" style="@style/PegStyle" android:layout_marginVertical="15dp" android:text="A" />
             <TextView android:id="@+id/btn_e2" style="@style/PegStyle" android:text="E" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="140dp"
-            android:layout_height="200dp"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
             android:src="@drawable/guitar_header"
-            android:alpha="0.85"
+            android:alpha="0.6"
             android:scaleType="fitCenter"
             android:layout_marginHorizontal="20dp"/>
 
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView android:id="@+id/btn_g3" style="@style/PegStyle" android:text="G" />
-            <TextView android:id="@+id/btn_b3" style="@style/PegStyle" android:layout_marginVertical="20dp" android:text="B" />
+            <TextView android:id="@+id/btn_b3" style="@style/PegStyle" android:layout_marginVertical="15dp" android:text="B" />
             <TextView android:id="@+id/btn_e4" style="@style/PegStyle" android:text="E" />
         </LinearLayout>
     </LinearLayout>
@@ -156,11 +163,18 @@
         android:id="@+id/footer_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="horizontal">
-        <TextView android:id="@+id/txt_hz" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="79.53 Hz" android:textColor="#FFFFFF" android:textSize="12sp" android:fontFamily="monospace"/>
-        <TextView android:id="@+id/txt_cents_raw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="38.53 cts" android:textColor="#FFFFFF" android:textSize="12sp" android:fontFamily="monospace"/>
+        <TextView
+            android:id="@+id/txt_hz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0.00 Hz"
+            android:textColor="#444444"
+            android:textSize="12sp"
+            android:fontFamily="monospace"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,8 +13,6 @@ public class Yin {
         int halfN = N / 2;
         float[] diff = new float[halfN];
         float[] cumulative = new float[halfN];
-
-        // Difference function: Sử dụng mảng frame đầy đủ để so sánh chính xác hơn
         for (int tau = 1; tau < halfN; tau++) {
             float sum = 0;
             for (int i = 0; i < halfN; i++) {
@@ -23,8 +21,6 @@ public class Yin {
             }
             diff[tau] = sum;
         }
-
-        // Cumulative mean normalized
         cumulative[0] = 1;
         float runningSum = 0;
         for (int tau = 1; tau < halfN; tau++) {
@@ -57,8 +53,6 @@ public class Yin {
         }
 
         if (tauEstimate <= 0) return -1f;
-
-        // Parabolic interpolation để tăng độ chính xác của tần số
         float betterTau = (float) tauEstimate;
         if (tauEstimate > 0 && tauEstimate < halfN - 1) {
             float s0 = cumulative[tauEstimate - 1];

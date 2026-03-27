@@ -1,7 +1,6 @@
 package com.example.myapplication.core;
 
 public class TunerEngine {
-    // Tần số nốt guitar chuẩn (E2, A2, D3, G3, B3, E4)
     public static double getTargetFrequency(String noteName) {
         switch (noteName) {
             case "E2": return 82.41;
